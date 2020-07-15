@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "theroofcan",
+  "id": "theroofedcanyon",
   "version": "${version}",
   "name": "The Roofed Canyon",
   "description": "Technically underground",
@@ -23,6 +23,7 @@
   },
   "mixins": [],
   "depends": {
+    "minecraft": "1.16.x",
     "fabricloader": ">=0.9.0",
     "fabric": "*"
   }
