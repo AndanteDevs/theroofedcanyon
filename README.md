@@ -1,6 +1,8 @@
 ![TRC Banner Image](https://trello-attachments.s3.amazonaws.com/5f0edfbace24945cdeea4098/5f0edff451d8e86f089b36b9/2a8f96691a7ec5ebadadce2b2b1c4feb/image.png)
 
-# The Roofed Canyon
+<h1 align="center">
+    The Roofed Canyon
+</h1>
 
 <p align="center">
     Description
