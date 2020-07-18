@@ -21,7 +21,12 @@ public class TRCBlocks {
 
     public static Block register(String id, Block block, boolean registerItem) {
         Block registeredBlock = Registry.register(Registry.BLOCK, new Identifier(TheRoofedCanyon.MOD_ID, id), block);
-        if (registerItem) Registry.register(Registry.ITEM, new Identifier(TheRoofedCanyon.MOD_ID, id), new BlockItem(registeredBlock, new Item.Settings().maxCount(64)));
+        if (registerItem) {
+            int maxCount = 64;
+            if (block instanceof SignBlock) maxCount = 16;
+
+            Registry.register(Registry.ITEM, new Identifier(TheRoofedCanyon.MOD_ID, id), new BlockItem(registeredBlock, new Item.Settings().maxCount(maxCount).group(TheRoofedCanyon.ITEM_GROUP)));
+        }
 
         return registeredBlock;
     }

@@ -28,10 +28,10 @@ public class WoodBlocks {
 
     public WoodBlocks(WoodBlocksConfig config) {
         LOG = register(config.id + "_log", createLogBlock(config.logTopMaterialColor, config.logSideMaterialColor));
-        STRIPPED_LOG = register(config.id + "stripped_log", createLogBlock(config.strippedLogTopMaterialColor, config.strippedLogSideMaterialColor));
+        STRIPPED_LOG = register("stripped_" + config.id + "_log", createLogBlock(config.strippedLogTopMaterialColor, config.strippedLogSideMaterialColor));
 
         WOOD = register(config.id + "_wood", new PillarBlock(AbstractBlock.Settings.of(config.woodMaterial, config.woodMaterialColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
-        STRIPPED_WOOD = register(config.id + "_stripped_wood", new PillarBlock(AbstractBlock.Settings.of(config.strippedWoodMaterial, config.strippedWoodMaterialColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
+        STRIPPED_WOOD = register("stripped_" + config.id + "_wood", new PillarBlock(AbstractBlock.Settings.of(config.strippedWoodMaterial, config.strippedWoodMaterialColor).strength(2.0F).sounds(BlockSoundGroup.WOOD)));
 
         PLANKS = register(config.id + "_planks", new Block(AbstractBlock.Settings.of(config.planksMaterial, config.planksMaterialColor).strength(2.0F, 3.0F).sounds(BlockSoundGroup.WOOD)));
         LEAVES = register(config.id + "_leaves", createLeavesBlock());
