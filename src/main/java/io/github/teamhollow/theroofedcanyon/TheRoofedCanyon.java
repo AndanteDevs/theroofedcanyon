@@ -22,6 +22,8 @@ public class TheRoofedCanyon implements ModInitializer {
 
         new TRCDecorators();
         new TRCBiomes();
+    
+        log(Level.INFO, "Initialized");
     }
 
     public static void log(Level level, String message){
