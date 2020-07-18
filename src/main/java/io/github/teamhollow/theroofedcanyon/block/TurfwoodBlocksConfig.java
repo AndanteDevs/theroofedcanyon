@@ -19,5 +19,6 @@ public class TurfwoodBlocksConfig extends WoodBlocksConfig {
         strippedWoodMaterial = Material.WOOD;
         strippedWoodMaterialColor = MaterialColor.WOOD;
         saplingGenerator = new OakSaplingGenerator();
+        tintIndex = 6301995;
     }
 }

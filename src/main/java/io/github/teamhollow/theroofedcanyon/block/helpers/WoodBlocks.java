@@ -8,6 +8,8 @@ import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 
 public class WoodBlocks {
+    public WoodBlocksConfig config;
+
     public Block LOG;
     public Block STRIPPED_LOG;
     public Block WOOD;
@@ -27,6 +29,8 @@ public class WoodBlocks {
     // public Entity BOAT;
 
     public WoodBlocks(WoodBlocksConfig config) {
+        this.config = config;
+
         LOG = register(config.id + "_log", createLogBlock(config.logTopMaterialColor, config.logSideMaterialColor));
         STRIPPED_LOG = register("stripped_" + config.id + "_log", createLogBlock(config.strippedLogTopMaterialColor, config.strippedLogSideMaterialColor));
 
