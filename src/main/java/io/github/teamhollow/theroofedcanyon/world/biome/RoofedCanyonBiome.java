@@ -33,16 +33,16 @@ public final class RoofedCanyonBiome extends Biome {
                                 .withChance(0.025F),
                         Feature.HUGE_RED_MUSHROOM.configure(DefaultBiomeFeatures.HUGE_RED_MUSHROOM_CONFIG)
                                 .withChance(0.05F),
-                        Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG).withChance(0.6666667F),
-                        Feature.TREE.configure(DefaultBiomeFeatures.BIRCH_TREE_CONFIG).withChance(0.2F),
-                        Feature.TREE.configure(DefaultBiomeFeatures.FANCY_TREE_CONFIG).withChance(0.1F)),
-                        Feature.TREE.configure(DefaultBiomeFeatures.OAK_TREE_CONFIG))));
+                        Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG).withChance(1F),
+                        Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG).withChance(1F),
+                        Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG).withChance(1F)),
+                        Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG))));
         DefaultBiomeFeatures.addForestFlowers(this);
         DefaultBiomeFeatures.addMineables(this);
         DefaultBiomeFeatures.addDefaultOres(this);
         DefaultBiomeFeatures.addDefaultDisks(this);
         DefaultBiomeFeatures.addDefaultFlowers(this);
-        DefaultBiomeFeatures.addForestGrass(this);
+        DefaultBiomeFeatures.addJungleGrass(this);
         DefaultBiomeFeatures.addDefaultMushrooms(this);
         DefaultBiomeFeatures.addDefaultVegetation(this);
         DefaultBiomeFeatures.addFrozenTopLayer(this);
