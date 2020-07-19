@@ -33,6 +33,8 @@ public class TheRoofedCanyon implements ModInitializer {
         new TRCDecorators();
         new TRCBiomes();
 
+        TRCParticleTypes.registerFactories();
+
         log(Level.INFO, "Initialized");
     }
 
