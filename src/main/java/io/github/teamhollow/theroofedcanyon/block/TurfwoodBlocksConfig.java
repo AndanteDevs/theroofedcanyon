@@ -1,9 +1,12 @@
 package io.github.teamhollow.theroofedcanyon.block;
 
 import io.github.teamhollow.theroofedcanyon.block.helpers.WoodBlocksConfig;
+import io.github.teamhollow.theroofedcanyon.block.sapling.TurfwoodSaplingGenerator;
+import io.github.teamhollow.theroofedcanyon.init.TRCBlocks;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
-import net.minecraft.block.sapling.OakSaplingGenerator;
+import net.minecraft.sound.BlockSoundGroup;
 
 public class TurfwoodBlocksConfig extends WoodBlocksConfig {
     public TurfwoodBlocksConfig() {
@@ -18,7 +21,9 @@ public class TurfwoodBlocksConfig extends WoodBlocksConfig {
         woodMaterialColor = MaterialColor.WOOD;
         strippedWoodMaterial = Material.WOOD;
         strippedWoodMaterialColor = MaterialColor.WOOD;
-        saplingGenerator = new OakSaplingGenerator();
+        saplingGenerator = new TurfwoodSaplingGenerator();
         tintIndex = 6301995;
+
+        LEAVES = new TurfwoodLeavesBlock(AbstractBlock.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(TRCBlocks::canSpawnOnLeaves).suffocates(TRCBlocks::never).blockVision(TRCBlocks::never));;
     }
 }

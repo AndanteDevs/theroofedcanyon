@@ -11,6 +11,8 @@ import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
 import net.minecraft.world.gen.GenerationStep;
+import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
+import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
@@ -18,25 +20,29 @@ import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 public final class RoofedCanyonBiome extends Biome {
     public RoofedCanyonBiome() {
-        super((new Biome.Settings()).configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
-                .precipitation(Biome.Precipitation.RAIN).category(Biome.Category.FOREST).depth(0.1F).scale(0.2F)
-                .temperature(0.7F).downfall(0.8F).effects((new BiomeEffects.Builder()).waterColor(4159204)
-                        .waterFogColor(329011).fogColor(12638463).moodSound(BiomeMoodSound.CAVE).build())
-                .parent(null));
+        super(
+            new Biome.Settings()
+                .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
+                .precipitation(Biome.Precipitation.RAIN)
+                .category(Biome.Category.FOREST)
+                .depth(0.1F)
+                .scale(0.2F)
+                .temperature(0.7F)
+                .downfall(0.8F)
+                .effects((new BiomeEffects.Builder())
+                    .waterColor(4159204)
+                    .waterFogColor(329011)
+                    .fogColor(12638463)
+                    .moodSound(BiomeMoodSound.CAVE)
+                    .build()
+                )
+                .parent(null)
+        );
         DefaultBiomeFeatures.addDefaultUndergroundStructures(this);
         DefaultBiomeFeatures.addLandCarvers(this);
         DefaultBiomeFeatures.addDefaultLakes(this);
         DefaultBiomeFeatures.addDungeons(this);
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
-                Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(ImmutableList.of(
-                        Feature.HUGE_BROWN_MUSHROOM.configure(DefaultBiomeFeatures.HUGE_BROWN_MUSHROOM_CONFIG)
-                                .withChance(0.025F),
-                        Feature.HUGE_RED_MUSHROOM.configure(DefaultBiomeFeatures.HUGE_RED_MUSHROOM_CONFIG)
-                                .withChance(0.05F),
-                        Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG).withChance(1F),
-                        Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG).withChance(1F),
-                        Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG).withChance(1F)),
-                        Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG))));
+        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(ImmutableList.of(Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG).withChance(0.33333334F)), Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG))).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))));
         DefaultBiomeFeatures.addForestFlowers(this);
         DefaultBiomeFeatures.addMineables(this);
         DefaultBiomeFeatures.addDefaultOres(this);
@@ -46,7 +52,6 @@ public final class RoofedCanyonBiome extends Biome {
         DefaultBiomeFeatures.addDefaultMushrooms(this);
         DefaultBiomeFeatures.addDefaultVegetation(this);
         DefaultBiomeFeatures.addFrozenTopLayer(this);
-        this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.CREEPER, 100, 4, 4));
         this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.SLIME, 100, 4, 4));
     }
 

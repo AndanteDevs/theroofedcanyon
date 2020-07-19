@@ -19,8 +19,7 @@ if (System.env.CI == "true") {
 	version = "${project.mod_version}+${project.minecraft_version}"
 }
 
-minecraft {
-}
+minecraft {}
 
 dependencies {
 	//to change the versions see the gradle.properties file
