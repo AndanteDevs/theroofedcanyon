@@ -3,7 +3,7 @@ package io.github.teamhollow.theroofedcanyon.block;
 import java.util.Random;
 
 import io.github.teamhollow.theroofedcanyon.init.TRCItems;
-// import io.github.teamhollow.theroofedcanyon.init.TRCParticleTypes;
+import io.github.teamhollow.theroofedcanyon.init.TRCParticleTypes;
 import io.github.teamhollow.theroofedcanyon.init.TRCProperties;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
@@ -31,7 +31,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
-// import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 
@@ -146,7 +146,7 @@ public class PotabloomFlowerBlock extends Block {
 
     @Environment(EnvType.CLIENT)
     private void addVileParticle(World world, double minX, double maxX, double minZ, double maxZ, double height) {
-        // world.addParticle(TRCParticleTypes.DRIPPING_VILE, MathHelper.lerp(world.random.nextDouble(), minX, maxX), height, MathHelper.lerp(world.random.nextDouble(), minZ, maxZ), 0.0D, 0.0D, 0.0D);
+        world.addParticle(TRCParticleTypes.DRIPPING_VILE, MathHelper.lerp(world.random.nextDouble(), minX, maxX), height, MathHelper.lerp(world.random.nextDouble(), minZ, maxZ), 0.0D, 0.0D, 0.0D);
     }
 
     protected void appendProperties(StateManager.Builder<Block, BlockState> builder) {
