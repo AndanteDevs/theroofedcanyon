@@ -1,7 +1,7 @@
 package io.github.teamhollow.theroofedcanyon.init;
 
 import io.github.teamhollow.theroofedcanyon.TheRoofedCanyon;
-import io.github.teamhollow.theroofedcanyon.block.TurfwoodBlocksConfig;
+import io.github.teamhollow.theroofedcanyon.block.*;
 import io.github.teamhollow.theroofedcanyon.block.helpers.WoodBlocks;
 import net.minecraft.block.*;
 import net.minecraft.entity.EntityType;
@@ -17,15 +17,19 @@ import net.minecraft.world.BlockView;
 public class TRCBlocks {
     public static final WoodBlocks TURFWOOD = new WoodBlocks(new TurfwoodBlocksConfig());
 
+    public static final Block POTABLOOM_FLOWER = register(PotabloomFlowerBlock.id, new PotabloomFlowerBlock());
+
     public TRCBlocks() {}
 
     public static Block register(String id, Block block, boolean registerItem) {
-        Block registeredBlock = Registry.register(Registry.BLOCK, new Identifier(TheRoofedCanyon.MOD_ID, id), block);
+        Identifier identifier = new Identifier(TheRoofedCanyon.MOD_ID, id);
+
+        Block registeredBlock = Registry.register(Registry.BLOCK, identifier, block);
         if (registerItem) {
             int maxCount = 64;
             if (block instanceof SignBlock) maxCount = 16;
 
-            Registry.register(Registry.ITEM, new Identifier(TheRoofedCanyon.MOD_ID, id), new BlockItem(registeredBlock, new Item.Settings().maxCount(maxCount).group(TheRoofedCanyon.ITEM_GROUP)));
+            Registry.register(Registry.ITEM, identifier, new BlockItem(registeredBlock, new Item.Settings().maxCount(maxCount).group(TheRoofedCanyon.ITEM_GROUP)));
         }
 
         return registeredBlock;

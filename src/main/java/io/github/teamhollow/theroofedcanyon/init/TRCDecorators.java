@@ -20,7 +20,7 @@ import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
 public class TRCDecorators {
     public static WoodBlocks TURFWOOD = TRCBlocks.TURFWOOD;
 
-    public static final TreeFeatureConfig TURFWOOD_TREE_CONFIG = (new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TURFWOOD.LOG.getDefaultState()), new SimpleBlockStateProvider(TURFWOOD.LEAVES.getDefaultState()), new DarkOakFoliagePlacer(8, 2, 0, 0), new DarkOakTrunkPlacer(6, 2, 1), new TwoLayersFeatureSize(1, 1, 2))).decorators(ImmutableList.of(new AlterGroundTreeDecorator(new SimpleBlockStateProvider(TURFWOOD.LEAVES.getDefaultState())))).build();
+    public static final TreeFeatureConfig TURFWOOD_TREE_CONFIG = new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TURFWOOD.LOG.getDefaultState()), new SimpleBlockStateProvider(TURFWOOD.LEAVES.getDefaultState()), new DarkOakFoliagePlacer(8, 2, 0, 0), new DarkOakTrunkPlacer(6, 2, 1), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of(new AlterGroundTreeDecorator(new SimpleBlockStateProvider(TURFWOOD.LEAVES.getDefaultState())))).build();
 
     public static final Decorator<NopeDecoratorConfig> TURFWOOD_TREE = register("turfwood_tree", new TurfwoodTreeDecorator(NopeDecoratorConfig.field_24891));
 

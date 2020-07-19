@@ -1,0 +1,6 @@
+{
+    "parent": "theroofedcanyon:block/potabloom_flower",
+    "textures": {
+        "up": "theroofedcanyon:block/potabloom_flower_top_vile"
+    }
+}

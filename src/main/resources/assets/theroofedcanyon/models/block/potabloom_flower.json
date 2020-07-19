@@ -1,0 +1,14 @@
+{
+    "parent": "minecraft:block/cube",
+    "textures": {
+        "north": "#side",
+        "south": "#side",
+        "east": "#side",
+        "west": "#side",
+
+        "particle": "theroofedcanyon:block/potabloom_flower_bottom",
+        "side": "theroofedcanyon:block/potabloom_flower_side",
+        "up": "theroofedcanyon:block/potabloom_flower_top",
+        "down": "theroofedcanyon:block/potabloom_flower_bottom"
+    }
+}
