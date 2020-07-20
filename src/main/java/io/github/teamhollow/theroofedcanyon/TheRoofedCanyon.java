@@ -11,6 +11,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import io.github.teamhollow.theroofedcanyon.init.*;
+import io.github.teamhollow.theroofedcanyon.util.Utils;
 
 public class TheRoofedCanyon implements ModInitializer {
     public static Logger LOGGER = LogManager.getLogger();
@@ -26,6 +27,8 @@ public class TheRoofedCanyon implements ModInitializer {
     @Override
     public void onInitialize() {
         log(Level.INFO, "Initializing");
+
+        new Utils();
 
         new TRCParticleTypes();
 

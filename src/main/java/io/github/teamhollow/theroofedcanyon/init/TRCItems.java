@@ -8,6 +8,7 @@ import net.minecraft.util.registry.Registry;
 
 public class TRCItems {
     public static final Item VILE_BOTTLE = register(VileBottleItem.id, new VileBottleItem());
+    public static final Item VILE_POTION = register(VilePotionItem.id, new VilePotionItem());
 
     private static Item register(String id, Item item) {
         return Registry.register(Registry.ITEM, new Identifier(TheRoofedCanyon.MOD_ID, id), item);
