@@ -18,7 +18,7 @@ import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
-public final class RoofedCanyonBiome extends Biome {
+public class RoofedCanyonBiome extends Biome {
     public RoofedCanyonBiome() {
         super(
             new Biome.Settings()
@@ -29,12 +29,13 @@ public final class RoofedCanyonBiome extends Biome {
                 .scale(0.2F)
                 .temperature(0.7F)
                 .downfall(0.8F)
-                .effects((new BiomeEffects.Builder())
-                    .waterColor(4159204)
-                    .waterFogColor(329011)
-                    .fogColor(12638463)
-                    .moodSound(BiomeMoodSound.CAVE)
-                    .build()
+                .effects(
+                    new BiomeEffects.Builder()
+                        .waterColor(4159204)
+                        .waterFogColor(329011)
+                        .fogColor(12638463)
+                        .moodSound(BiomeMoodSound.CAVE)
+                        .build()
                 )
                 .parent(null)
         );
@@ -42,7 +43,14 @@ public final class RoofedCanyonBiome extends Biome {
         DefaultBiomeFeatures.addLandCarvers(this);
         DefaultBiomeFeatures.addDefaultLakes(this);
         DefaultBiomeFeatures.addDungeons(this);
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION, Feature.RANDOM_SELECTOR.configure(new RandomFeatureConfig(ImmutableList.of(Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG).withChance(0.33333334F)), Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG))).createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP.configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))));
+        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+                Feature.RANDOM_SELECTOR
+                        .configure(new RandomFeatureConfig(
+                                ImmutableList.of(Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG)
+                                        .withChance(0.33333334F)),
+                                Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG)))
+                        .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP
+                                .configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))));
         DefaultBiomeFeatures.addForestFlowers(this);
         DefaultBiomeFeatures.addMineables(this);
         DefaultBiomeFeatures.addDefaultOres(this);
