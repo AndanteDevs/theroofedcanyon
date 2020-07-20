@@ -3,6 +3,7 @@ package io.github.teamhollow.theroofedcanyon.init;
 import io.github.teamhollow.theroofedcanyon.TheRoofedCanyon;
 import io.github.teamhollow.theroofedcanyon.world.biome.*;
 import net.fabricmc.fabric.api.biomes.v1.OverworldBiomes;
+import net.fabricmc.fabric.api.biomes.v1.OverworldClimate;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.minecraft.world.biome.Biome;
@@ -12,6 +13,10 @@ public class TRCBiomes {
     public static final Biome ROOFED_CANYON_EDGE = register("roofed_canyon_edge", new RoofedCanyonEdgeBiome());
 
     public TRCBiomes() {
+        // add biome to spawn
+        OverworldBiomes.addContinentalBiome(ROOFED_CANYON, OverworldClimate.TEMPERATE, 2D);
+
+        // add biome variants
         OverworldBiomes.addEdgeBiome(ROOFED_CANYON, ROOFED_CANYON_EDGE, 1);
     }
 
