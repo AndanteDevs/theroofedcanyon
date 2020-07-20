@@ -35,11 +35,11 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.World;
 
-public class PotabloomFlowerBlock extends Block {
-	public static String id = "potabloom_flower";
+public class VilepotFlowerBlock extends Block {
+	public static String id = "vilepot_flower";
     public static final IntProperty VILE_LEVEL;
 
-    public PotabloomFlowerBlock() {
+    public VilepotFlowerBlock() {
         super(AbstractBlock.Settings.of(Material.ORGANIC_PRODUCT, MaterialColor.GRASS).strength(0.8F).sounds(BlockSoundGroup.SLIME));
         this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(VILE_LEVEL, 0)));
     }

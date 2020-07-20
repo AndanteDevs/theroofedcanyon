@@ -1,0 +1,6 @@
+{
+    "parent": "theroofedcanyon:block/vilepot_flower",
+    "textures": {
+        "up": "theroofedcanyon:block/vilepot_flower_top_vile"
+    }
+}

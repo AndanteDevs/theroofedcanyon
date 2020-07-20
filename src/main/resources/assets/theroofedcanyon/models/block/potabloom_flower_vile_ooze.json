@@ -1,6 +1,0 @@
-{
-    "parent": "theroofedcanyon:block/potabloom_flower_vile",
-    "textures": {
-        "side": "theroofedcanyon:block/potabloom_flower_side_vile_ooze"
-    }
-}

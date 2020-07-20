@@ -17,7 +17,7 @@ import net.minecraft.world.BlockView;
 public class TRCBlocks {
     public static final WoodBlocks TURFWOOD = new WoodBlocks(new TurfwoodBlocksConfig());
 
-    public static final Block POTABLOOM_FLOWER = register(PotabloomFlowerBlock.id, new PotabloomFlowerBlock());
+    public static final Block VILEPOT_FLOWER = register(VilepotFlowerBlock.id, new VilepotFlowerBlock());
 
     public TRCBlocks() {}
 

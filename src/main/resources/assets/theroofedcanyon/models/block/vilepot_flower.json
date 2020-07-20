@@ -1,0 +1,14 @@
+{
+    "parent": "minecraft:block/cube",
+    "textures": {
+        "north": "#side",
+        "south": "#side",
+        "east": "#side",
+        "west": "#side",
+
+        "particle": "theroofedcanyon:block/vilepot_flower_bottom",
+        "side": "theroofedcanyon:block/vilepot_flower_side",
+        "up": "theroofedcanyon:block/vilepot_flower_top",
+        "down": "theroofedcanyon:block/vilepot_flower_bottom"
+    }
+}
