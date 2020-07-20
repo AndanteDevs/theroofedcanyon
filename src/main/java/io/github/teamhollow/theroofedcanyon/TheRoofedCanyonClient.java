@@ -12,7 +12,7 @@ public class TheRoofedCanyonClient implements ClientModInitializer {
     public void onInitializeClient() {
         log(Level.INFO, "Initializing client");
 
-        new TRCParticleTypes();
+        TRCParticleTypes.registerFactories();
 
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> TRCBlocks.TURFWOOD.config.tintIndex, TRCBlocks.TURFWOOD.LEAVES);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> TRCBlocks.TURFWOOD.config.tintIndex, TRCBlocks.TURFWOOD.LEAVES);
