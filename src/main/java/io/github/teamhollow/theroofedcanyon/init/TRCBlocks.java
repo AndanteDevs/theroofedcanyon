@@ -45,13 +45,13 @@ public class TRCBlocks {
         return new LeavesBlock(AbstractBlock.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(TRCBlocks::canSpawnOnLeaves).suffocates(TRCBlocks::never).blockVision(TRCBlocks::never));
    }
 
-    public static Boolean canSpawnOnLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
+    public static boolean canSpawnOnLeaves(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
         return type == EntityType.OCELOT || type == EntityType.PARROT;
     }
     public static boolean never(BlockState state, BlockView world, BlockPos pos) {
         return false;
     }
-    public static Boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
+    public static boolean never(BlockState state, BlockView world, BlockPos pos, EntityType<?> type) {
         return false;
     }
 }

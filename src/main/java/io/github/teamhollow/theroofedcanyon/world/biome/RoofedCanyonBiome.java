@@ -3,13 +3,11 @@ package io.github.teamhollow.theroofedcanyon.world.biome;
 import com.google.common.collect.ImmutableList;
 
 import io.github.teamhollow.theroofedcanyon.init.TRCDecorators;
-import io.github.teamhollow.theroofedcanyon.init.TRCParticleTypes;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.biome.BiomeParticleConfig;
 import net.minecraft.world.gen.GenerationStep;
 import net.minecraft.world.gen.decorator.CountExtraChanceDecoratorConfig;
 import net.minecraft.world.gen.decorator.Decorator;
@@ -35,12 +33,6 @@ public class RoofedCanyonBiome extends Biome {
                         .waterFogColor(329011)
                         .fogColor(12638463)
                         .moodSound(BiomeMoodSound.CAVE)
-                        .particleConfig(
-                            new BiomeParticleConfig(
-                                TRCParticleTypes.FALLING_VILE,
-                                0.005F
-                            )
-                        )
                         .build()
                 )
                 .parent(null)

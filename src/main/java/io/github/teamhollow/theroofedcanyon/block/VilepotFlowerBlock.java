@@ -115,13 +115,14 @@ public class VilepotFlowerBlock extends Block {
 
     @Environment(EnvType.CLIENT)
     public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
-        if (isOozing(state)) this.spawnVileParticles(world, pos, state, random, 3);
+        if (isOozing(state))
+            VilepotFlowerBlock.spawnVileParticles(world, pos, state, random, 3);
     }
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (random.nextInt(45) == 0) {
             this.modifyVile(world, state, pos, +1);
-            this.spawnVileParticles(world, pos.up(1), state, random, 30);
+            VilepotFlowerBlock.spawnVileParticles(world, pos.up(1), state, random, 30);
         }
     }
     public boolean hasRandomTicks(BlockState state) {
@@ -129,7 +130,7 @@ public class VilepotFlowerBlock extends Block {
     }
 
     @Environment(EnvType.CLIENT)
-    private void spawnVileParticles(World world, BlockPos pos, BlockState state, Random random, int count) {
+	public static void spawnVileParticles(World world, BlockPos pos, BlockState state, Random random, int count) {
         for (int i = 0; i < count; ++i) {
             if (state.getFluidState().isEmpty() && world.random.nextFloat() >= 0.3F) {
                 VoxelShape voxelShape = state.getCollisionShape(world, pos);
@@ -137,14 +138,14 @@ public class VilepotFlowerBlock extends Block {
                 if (d >= 1.0D && !state.isIn(BlockTags.IMPERMEABLE)) {
                     double e = voxelShape.getMin(Direction.Axis.Y);
                     if (e > 0.0D) {
-                        this.addVileParticle(world, pos, voxelShape, (double)pos.getY() + e - 0.05D);
+                        VilepotFlowerBlock.addVileParticle(world, pos, voxelShape, (double)pos.getY() + e - 0.05D);
                     } else {
                         BlockPos blockPos = pos.down();
                         BlockState blockState = world.getBlockState(blockPos);
                         VoxelShape voxelShape2 = blockState.getCollisionShape(world, blockPos);
                         double f = voxelShape2.getMax(Direction.Axis.Y);
                         if ((f < 1.0D || !blockState.isFullCube(world, blockPos)) && blockState.getFluidState().isEmpty()) {
-                            this.addVileParticle(world, pos, voxelShape, (double)pos.getY() - 0.05D);
+                            VilepotFlowerBlock.addVileParticle(world, pos, voxelShape, (double)pos.getY() - 0.05D);
                         }
                     }
                 }
@@ -153,14 +154,14 @@ public class VilepotFlowerBlock extends Block {
     }
 
     @Environment(EnvType.CLIENT)
-    private void addVileParticle(World world, BlockPos pos, VoxelShape shape, double height) {
-        this.addVileParticle(world, (double)pos.getX() + shape.getMin(Direction.Axis.X),
+    private static void addVileParticle(World world, BlockPos pos, VoxelShape shape, double height) {
+        VilepotFlowerBlock.addVileParticle(world, (double)pos.getX() + shape.getMin(Direction.Axis.X),
                 (double)pos.getX() + shape.getMax(Direction.Axis.X),
                 (double)pos.getZ() + shape.getMin(Direction.Axis.Z),
                 (double)pos.getZ() + shape.getMax(Direction.Axis.Z), height);
     }
     @Environment(EnvType.CLIENT)
-    private void addVileParticle(World world, double minX, double maxX, double minZ, double maxZ, double height) {
+    private static void addVileParticle(World world, double minX, double maxX, double minZ, double maxZ, double height) {
         world.addParticle(TRCParticleTypes.DRIPPING_VILE, MathHelper.lerp(world.random.nextDouble(), minX, maxX), height, MathHelper.lerp(world.random.nextDouble(), minZ, maxZ), 0.0D, 0.0D, 0.0D);
     }
 

@@ -3,6 +3,8 @@ package io.github.teamhollow.theroofedcanyon.block;
 import java.util.Random;
 
 import io.github.teamhollow.theroofedcanyon.init.TRCBlocks;
+import net.fabricmc.api.EnvType;
+import net.fabricmc.api.Environment;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.GrassBlock;
@@ -10,6 +12,7 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
+import net.minecraft.world.World;
 import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
 
@@ -35,6 +38,23 @@ public class TurfwoodLeavesBlock extends GrassBlock {
             }
 
         }
+    }
+
+    @Environment(EnvType.CLIENT)
+    public void randomDisplayTick(BlockState state, World world, BlockPos pos, Random random) {
+        int woodPosDown = getLowestConnectedWoodBlock(world, pos);
+        if (woodPosDown > 0 && random.nextDouble() <= 0.225D) VilepotFlowerBlock.spawnVileParticles(world, pos.down(woodPosDown), state, random, 1);
+    }
+    private int getLowestConnectedWoodBlock(World world, BlockPos pos) {
+        int woodPosDown = 0;
+
+        for (int i = 0; i < 5; i++)
+            if (world.getBlockState(pos.down(i + 1)).getBlock() == TRCBlocks.TURFWOOD.WOOD)
+                woodPosDown++;
+            else
+                break;
+
+        return woodPosDown;
     }
 
     private static boolean canSurvive(BlockState state, WorldView worldView, BlockPos pos) {
