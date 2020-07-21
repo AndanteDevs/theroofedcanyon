@@ -22,7 +22,6 @@ public class TurfwoodBlocksConfig extends WoodBlocksConfig {
         strippedWoodMaterial = Material.WOOD;
         strippedWoodMaterialColor = MaterialColor.WOOD;
         saplingGenerator = new TurfwoodSaplingGenerator();
-        tintIndex = 6301995;
 
         LEAVES = new TurfwoodLeavesBlock(AbstractBlock.Settings.of(Material.LEAVES).strength(0.2F).ticksRandomly().sounds(BlockSoundGroup.GRASS).nonOpaque().allowsSpawning(TRCBlocks::canSpawnOnLeaves).suffocates(TRCBlocks::never).blockVision(TRCBlocks::never));;
     }

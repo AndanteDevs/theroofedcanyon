@@ -20,7 +20,7 @@ public class TurfwoodLeavesBlock extends GrassBlock {
 
     @Override
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!canSurvive(state, world, pos)) {
+        if (!canSurvive(state, world, pos) || world.getBlockState(pos.up()).getBlock() == TRCBlocks.TURFWOOD.LEAVES) {
             world.setBlockState(pos, TRCBlocks.TURFWOOD.LOG.getDefaultState());
         } else {
             if (world.getLightLevel(pos.up()) >= 9) {
@@ -29,8 +29,7 @@ public class TurfwoodLeavesBlock extends GrassBlock {
                 for (int i = 0; i < 4; ++i) {
                     BlockPos blockPos = pos.add(random.nextInt(3) - 1, random.nextInt(5) - 3, random.nextInt(3) - 1);
                     if (world.getBlockState(blockPos).isOf(TRCBlocks.TURFWOOD.LOG) && canSpread(blockState, world, blockPos)) {
-                        world.setBlockState(blockPos, (BlockState) blockState.with(SNOWY,
-                                world.getBlockState(blockPos.up()).isOf(Blocks.SNOW)));
+                        world.setBlockState(blockPos, (BlockState) blockState.with(SNOWY, world.getBlockState(blockPos.up()).isOf(Blocks.SNOW)));
                     }
                 }
             }
@@ -44,8 +43,7 @@ public class TurfwoodLeavesBlock extends GrassBlock {
         if (blockState.getFluidState().getLevel() == 8) {
             return false;
         } else {
-            int i = ChunkLightProvider.getRealisticOpacity(worldView, state, pos, blockState, blockPos, Direction.UP,
-                    blockState.getOpacity(worldView, blockPos));
+            int i = ChunkLightProvider.getRealisticOpacity(worldView, state, pos, blockState, blockPos, Direction.UP, blockState.getOpacity(worldView, blockPos));
             return i < worldView.getMaxLightLevel();
         }
     }

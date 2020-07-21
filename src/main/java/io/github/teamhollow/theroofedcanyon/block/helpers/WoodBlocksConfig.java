@@ -18,7 +18,6 @@ public class WoodBlocksConfig {
 	public Material strippedWoodMaterial;
 	public MaterialColor strippedWoodMaterialColor;
 	public SaplingGenerator saplingGenerator;
-    public int tintIndex;
     
     public Block LOG;
     public Block STRIPPED_LOG;
