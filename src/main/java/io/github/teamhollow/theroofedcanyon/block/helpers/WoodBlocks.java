@@ -4,6 +4,8 @@ import static io.github.teamhollow.theroofedcanyon.init.TRCBlocks.*;
 
 import io.github.teamhollow.theroofedcanyon.block.*;
 import io.github.teamhollow.theroofedcanyon.init.TRCBlocks;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
+import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.*;
 import net.minecraft.sound.BlockSoundGroup;
 
@@ -86,5 +88,34 @@ public class WoodBlocks {
         STAIRS = register(config.id + "_stairs", STAIRS);
         DOOR = register(config.id + "_door", DOOR);
         // SIGN =
+
+        // block properties
+        if (config.isFlammable) {
+            int baseBurnChance = config.baseBurnChance;
+            int largeBurnChance = baseBurnChance * 6;
+
+            int baseSpreadChance = config.baseSpreadChance;
+            int smallSpreadChance = baseSpreadChance / 4;
+            int largeSpreadChance = baseSpreadChance * 3;
+
+            FlammableBlockRegistry INSTANCE = FlammableBlockRegistry.getDefaultInstance();
+            INSTANCE.add(PLANKS, baseBurnChance, baseSpreadChance);
+            INSTANCE.add(SLAB, baseBurnChance, baseSpreadChance);
+            INSTANCE.add(FENCE_GATE, baseBurnChance, baseSpreadChance);
+            INSTANCE.add(FENCE, baseBurnChance, baseSpreadChance);
+            INSTANCE.add(STAIRS, baseBurnChance, baseSpreadChance);
+            INSTANCE.add(LOG, baseBurnChance, smallSpreadChance);
+            INSTANCE.add(STRIPPED_LOG, baseBurnChance, smallSpreadChance);
+            INSTANCE.add(STRIPPED_WOOD, baseBurnChance, smallSpreadChance);
+            INSTANCE.add(WOOD, baseBurnChance, smallSpreadChance);
+            INSTANCE.add(LEAVES, largeBurnChance, largeSpreadChance);
+        }
+        if (config.canBeUsedAsFuel) {
+            int fenceFuelTime = 300;
+
+            FuelRegistry INSTANCE = FuelRegistry.INSTANCE;
+            INSTANCE.add(FENCE, fenceFuelTime);
+            INSTANCE.add(FENCE_GATE, fenceFuelTime);
+        }
     }
 }

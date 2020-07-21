@@ -35,5 +35,10 @@ public class WoodBlocksConfig {
     public Block STAIRS;
     public Block DOOR;
 
+	public boolean isFlammable = true;
+	public boolean canBeUsedAsFuel = true;
+	public int baseBurnChance = 5;
+	public int baseSpreadChance = 20;
+
     public WoodBlocksConfig() {}
 }
