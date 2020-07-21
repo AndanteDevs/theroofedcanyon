@@ -4,6 +4,7 @@ import org.apache.logging.log4j.Level;
 
 import io.github.teamhollow.theroofedcanyon.init.TRCBlocks;
 import io.github.teamhollow.theroofedcanyon.init.TRCParticleTypes;
+import io.github.teamhollow.theroofedcanyon.util.Utils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
@@ -21,6 +22,7 @@ public class TheRoofedCanyonClient implements ClientModInitializer {
     public void onInitializeClient() {
         log(Level.INFO, "Initializing client");
 
+        new Utils();
         TRCParticleTypes.registerFactories();
 
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
