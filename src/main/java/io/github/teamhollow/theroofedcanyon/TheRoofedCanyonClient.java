@@ -8,6 +8,7 @@ import io.github.teamhollow.theroofedcanyon.util.Utils;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.color.world.BiomeColors;
@@ -25,6 +26,7 @@ public class TheRoofedCanyonClient implements ClientModInitializer {
         new Utils();
         TRCParticleTypes.registerFactories();
 
+        // biome colours
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {
             return world != null && pos != null 
                     ? BiomeColors.getGrassColor(world, pos)
@@ -35,7 +37,14 @@ public class TheRoofedCanyonClient implements ClientModInitializer {
             return new BlockColors().getColor(blockState, (BlockRenderView) null, (BlockPos) null, tintIndex);
         }, TRCBlocks.TURFWOOD.LEAVES);
 
-        BlockRenderLayerMap.INSTANCE.putBlock(TRCBlocks.TURFWOOD.LEAVES, RenderLayer.getCutoutMipped());
+        // render layers
+        BlockRenderLayerMap INSTANCE = BlockRenderLayerMap.INSTANCE;
+        INSTANCE.putBlock(TRCBlocks.TURFWOOD.LEAVES, RenderLayer.getCutoutMipped());
+
+        Block[] cutoutRenderLayerBlocks = { TRCBlocks.TURFWOOD.SAPLING, TRCBlocks.VILEPOT_FLOWER };
+        for (Block block : cutoutRenderLayerBlocks) {
+            INSTANCE.putBlock(block, RenderLayer.getCutout());
+        }
 
         log(Level.INFO, "Initialized client");
     }

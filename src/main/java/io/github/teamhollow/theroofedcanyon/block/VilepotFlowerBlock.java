@@ -12,7 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
-import net.minecraft.block.entity.BlockEntity;
+import net.minecraft.block.ShapeContext;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -32,15 +32,31 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.shape.VoxelShape;
+import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 
 public class VilepotFlowerBlock extends Block {
-	public static String id = "vilepot_flower";
+    public static String id = "vilepot_flower";
+
     public static final IntProperty VILE_LEVEL;
+    public static final VoxelShape SHAPE = Block.createCuboidShape(2.0D, 0.0D, 2.0D, 14.0D, 15.0D, 14.0D);
 
     public VilepotFlowerBlock() {
-        super(AbstractBlock.Settings.of(Material.ORGANIC_PRODUCT, MaterialColor.GRASS).strength(0.8F).sounds(BlockSoundGroup.SLIME));
+        super(
+            AbstractBlock.Settings
+                .of(Material.ORGANIC_PRODUCT, MaterialColor.GRASS)
+                .strength(0.8F)
+                .lightLevel((state) -> {
+                    return 3;
+                })
+                .nonOpaque()
+                .sounds(BlockSoundGroup.SLIME)
+        );
         this.setDefaultState((BlockState)((BlockState)((BlockState)this.stateManager.getDefaultState()).with(VILE_LEVEL, 0)));
+    }
+
+    public VoxelShape getOutlineShape(BlockState state, BlockView world, BlockPos pos, ShapeContext context) {
+        return SHAPE;
     }
 
     public boolean hasComparatorOutput(BlockState state) {
@@ -51,15 +67,15 @@ public class VilepotFlowerBlock extends Block {
         return getVile(state);
     }
 
-    public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack stack) {
-        super.afterBreak(world, player, pos, state, blockEntity, stack);
-        // if (!world.isClient) {
-        //     if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 0) {
-        //         world.updateComparators(pos, this);
-        //         this.angerNearbyCarniblooms(world, pos);
-        //     }
-        // }
-    }
+    // public void afterBreak(World world, PlayerEntity player, BlockPos pos, BlockState state, BlockEntity blockEntity, ItemStack stack) {
+    //     super.afterBreak(world, player, pos, state, blockEntity, stack);
+    //     if (!world.isClient) {
+    //         if (EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 0) {
+    //             world.updateComparators(pos, this);
+    //             this.angerNearbyCarniblooms(world, pos);
+    //         }
+    //     }
+    // }
 
     // @SuppressWarnings("rawtypes")
     // private void angerNearbyCarniblooms(World world, BlockPos pos) {
@@ -120,10 +136,8 @@ public class VilepotFlowerBlock extends Block {
     }
 
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (random.nextInt(45) == 0) {
-            this.modifyVile(world, state, pos, +1);
-            VilepotFlowerBlock.spawnVileParticles(world, pos.up(1), state, random, 30);
-        }
+        this.modifyVile(world, state, pos, +1);
+        VilepotFlowerBlock.spawnVileParticles(world.getWorld(), pos.up(), state, random, 20);
     }
     public boolean hasRandomTicks(BlockState state) {
         return !isMature(state);
