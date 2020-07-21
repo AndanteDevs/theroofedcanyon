@@ -5,10 +5,13 @@ import java.util.Random;
 import io.github.teamhollow.theroofedcanyon.init.TRCBlocks;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.GrassBlock;
+import net.minecraft.block.Material;
 import net.minecraft.server.world.ServerWorld;
+import net.minecraft.sound.BlockSoundGroup;
 import net.minecraft.tag.FluidTags;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -17,8 +20,8 @@ import net.minecraft.world.WorldView;
 import net.minecraft.world.chunk.light.ChunkLightProvider;
 
 public class TurfwoodLeavesBlock extends GrassBlock {
-    public TurfwoodLeavesBlock(Settings settings) {
-        super(settings);
+    public TurfwoodLeavesBlock() {
+        super(AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.WOOD));
     }
 
     @Override
