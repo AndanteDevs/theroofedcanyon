@@ -13,8 +13,8 @@ public final class RoofedCanyonEdgeBiome extends Biome {
                 .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
                 .precipitation(Biome.Precipitation.RAIN)
                 .category(Biome.Category.FOREST)
-                .depth(3.0F)
-                .scale(0.025F)
+                .depth(4.0F)
+                .scale(0.2F)
                 .temperature(0.8F)
                 .downfall(0.4F)
                 .effects(
