@@ -15,6 +15,7 @@ import net.minecraft.world.gen.decorator.Decorator;
 import net.minecraft.world.gen.decorator.DecoratorConfig;
 import net.minecraft.world.gen.decorator.LeaveVineTreeDecorator;
 import net.minecraft.world.gen.decorator.NopeDecoratorConfig;
+import net.minecraft.world.gen.decorator.TrunkVineTreeDecorator;
 import net.minecraft.world.gen.feature.RandomPatchFeatureConfig;
 import net.minecraft.world.gen.feature.TreeFeatureConfig;
 import net.minecraft.world.gen.feature.size.TwoLayersFeatureSize;
@@ -25,7 +26,7 @@ import net.minecraft.world.gen.trunk.DarkOakTrunkPlacer;
 public class TRCDecorators {
     public static WoodBlocks TURFWOOD = TRCBlocks.TURFWOOD;
 
-    public static final TreeFeatureConfig TURFWOOD_TREE_CONFIG = new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TURFWOOD.LOG.getDefaultState()), new SimpleBlockStateProvider(TURFWOOD.LEAVES.getDefaultState()), new TurfwoodFoliagePlacer(8, 2, 0, 0), new DarkOakTrunkPlacer(9, 2, 1), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of(new AlterGroundTreeDecorator(new SimpleBlockStateProvider(TURFWOOD.LEAVES.getDefaultState())), LeaveVineTreeDecorator.field_24961)).build();
+    public static final TreeFeatureConfig TURFWOOD_TREE_CONFIG = new TreeFeatureConfig.Builder(new SimpleBlockStateProvider(TURFWOOD.LOG.getDefaultState()), new SimpleBlockStateProvider(TURFWOOD.LEAVES.getDefaultState()), new TurfwoodFoliagePlacer(8, 2, 0, 0), new DarkOakTrunkPlacer(9, 2, 1), new TwoLayersFeatureSize(1, 1, 2)).decorators(ImmutableList.of(new AlterGroundTreeDecorator(new SimpleBlockStateProvider(TURFWOOD.LEAVES.getDefaultState())), TrunkVineTreeDecorator.field_24965, LeaveVineTreeDecorator.field_24961)).build();
     public static final RandomPatchFeatureConfig VILEPOT_PATCH_CONFIG = new RandomPatchFeatureConfig.Builder(new SimpleBlockStateProvider(TRCBlocks.VILEPOT_FLOWER.getDefaultState()), SimpleBlockPlacer.field_24871).tries(64).whitelist(ImmutableSet.of(Blocks.GRASS_BLOCK)).canReplace().cannotProject().build();
 
     public static final Decorator<NopeDecoratorConfig> TURFWOOD_TREE = register("turfwood_tree", new TurfwoodTreeDecorator(NopeDecoratorConfig.field_24891));
