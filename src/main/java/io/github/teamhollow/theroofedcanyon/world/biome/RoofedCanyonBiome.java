@@ -45,10 +45,10 @@ public class RoofedCanyonBiome extends Biome {
                 Feature.RANDOM_SELECTOR
                         .configure(new RandomFeatureConfig(
                                 ImmutableList.of(Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG)
-                                        .withChance(0.33333334F)),
+                                        .withChance(0.5F)),
                                 Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG)))
                         .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP
-                                .configure(new CountExtraChanceDecoratorConfig(10, 0.1F, 1))));
+                                .configure(new CountExtraChanceDecoratorConfig(50, 0.1F, 1))));
         DefaultBiomeFeatures.addForestFlowers(this);
         DefaultBiomeFeatures.addMineables(this);
         DefaultBiomeFeatures.addDefaultOres(this);
