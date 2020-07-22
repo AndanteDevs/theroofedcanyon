@@ -8,6 +8,8 @@ import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.feature.Feature;
 
 public final class ModifiedRoofedCanyonBiome extends RoofedCanyonBiome {
+    public static final String id = "modified_roofed_canyon";
+
     public ModifiedRoofedCanyonBiome() {
         super();
         this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,

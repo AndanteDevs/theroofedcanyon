@@ -3,22 +3,21 @@ package io.github.teamhollow.theroofedcanyon.world.biome;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
-import net.minecraft.world.gen.feature.DefaultBiomeFeatures;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
-public final class RoofedCanyonEdgeBiome extends Biome {
-    public static final String id = "roofed_canyon_edge";
+public class RoofedCanyonHighlandsBiome extends Biome {
+    public static final String id = "roofed_canyon_highlands";
 
-	public RoofedCanyonEdgeBiome() {
+	public RoofedCanyonHighlandsBiome() {
         super(
             new Biome.Settings()
                 .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
                 .precipitation(Biome.Precipitation.RAIN)
                 .category(Biome.Category.FOREST)
-                .depth(4.0F)
+                .depth(2.5F)
                 .scale(0.2F)
-                .temperature(0.8F)
-                .downfall(0.4F)
+                .temperature(0.7F)
+                .downfall(0.5F)
                 .effects(
                     new BiomeEffects.Builder()
                         .waterColor(4159204)
@@ -29,12 +28,6 @@ public final class RoofedCanyonEdgeBiome extends Biome {
                 )
                 .parent(null)
         );
-        DefaultBiomeFeatures.addDefaultUndergroundStructures(this);
-        DefaultBiomeFeatures.addDungeons(this);
-        DefaultBiomeFeatures.addForestFlowers(this);
-        DefaultBiomeFeatures.addMineables(this);
-        DefaultBiomeFeatures.addDefaultOres(this);
-        DefaultBiomeFeatures.addDefaultFlowers(this);
-        DefaultBiomeFeatures.addJungleGrass(this);
+        RoofedCanyonBiome.addFeatures(this);
     }
 }

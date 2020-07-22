@@ -17,7 +17,9 @@ import net.minecraft.world.gen.feature.RandomFeatureConfig;
 import net.minecraft.world.gen.surfacebuilder.SurfaceBuilder;
 
 public class RoofedCanyonBiome extends Biome {
-    public RoofedCanyonBiome() {
+    public static final String id = "roofed_canyon";
+
+	public RoofedCanyonBiome() {
         super(
             new Biome.Settings()
                 .configureSurfaceBuilder(SurfaceBuilder.DEFAULT, SurfaceBuilder.GRASS_CONFIG)
@@ -37,27 +39,31 @@ public class RoofedCanyonBiome extends Biome {
                 )
                 .parent(null)
         );
-        DefaultBiomeFeatures.addDefaultUndergroundStructures(this);
-        DefaultBiomeFeatures.addLandCarvers(this);
-        DefaultBiomeFeatures.addDefaultLakes(this);
-        DefaultBiomeFeatures.addDungeons(this);
-        this.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
+        addFeatures(this);
+        this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.SLIME, 100, 4, 4));
+    }
+
+	public static void addFeatures(Biome biome) {
+        DefaultBiomeFeatures.addDefaultUndergroundStructures(biome);
+        DefaultBiomeFeatures.addLandCarvers(biome);
+        DefaultBiomeFeatures.addDefaultLakes(biome);
+        DefaultBiomeFeatures.addDungeons(biome);
+        biome.addFeature(GenerationStep.Feature.VEGETAL_DECORATION,
                 Feature.RANDOM_SELECTOR
                         .configure(new RandomFeatureConfig(
-                                ImmutableList.of(Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG)
-                                        .withChance(0.5F)),
+                                ImmutableList.of(
+                                        Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG).withChance(0.5F)),
                                 Feature.TREE.configure(TRCDecorators.TURFWOOD_TREE_CONFIG)))
                         .createDecoratedFeature(Decorator.COUNT_EXTRA_HEIGHTMAP
                                 .configure(new CountExtraChanceDecoratorConfig(50, 0.1F, 1))));
-        DefaultBiomeFeatures.addForestFlowers(this);
-        DefaultBiomeFeatures.addMineables(this);
-        DefaultBiomeFeatures.addDefaultOres(this);
-        DefaultBiomeFeatures.addDefaultDisks(this);
-        DefaultBiomeFeatures.addDefaultFlowers(this);
-        DefaultBiomeFeatures.addJungleGrass(this);
-        DefaultBiomeFeatures.addDefaultMushrooms(this);
-        DefaultBiomeFeatures.addDefaultVegetation(this);
-        DefaultBiomeFeatures.addFrozenTopLayer(this);
-        this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.SLIME, 100, 4, 4));
-    }
+        DefaultBiomeFeatures.addForestFlowers(biome);
+        DefaultBiomeFeatures.addMineables(biome);
+        DefaultBiomeFeatures.addDefaultOres(biome);
+        DefaultBiomeFeatures.addDefaultDisks(biome);
+        DefaultBiomeFeatures.addDefaultFlowers(biome);
+        DefaultBiomeFeatures.addJungleGrass(biome);
+        DefaultBiomeFeatures.addDefaultMushrooms(biome);
+        DefaultBiomeFeatures.addDefaultVegetation(biome);
+        DefaultBiomeFeatures.addFrozenTopLayer(biome);
+	}
 }
