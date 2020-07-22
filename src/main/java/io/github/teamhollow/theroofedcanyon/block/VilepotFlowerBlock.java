@@ -121,11 +121,11 @@ public class VilepotFlowerBlock extends Block {
         world.setBlockState(pos, (BlockState)state.with(VILE_LEVEL, getVile(state) + modifier), 3);
         world.updateComparators(pos, this);
     }
-    public int getVile(BlockState state) {
-        return (int)state.get(VILE_LEVEL);
+    public static int getVile(BlockState state) {
+        return (int) state.get(VILE_LEVEL);
     }
 
-    public boolean hasVile(BlockState state) {
+    public static boolean hasVile(BlockState state) {
         return getVile(state) > 0;
     }
     public boolean isOozing(BlockState state) {
