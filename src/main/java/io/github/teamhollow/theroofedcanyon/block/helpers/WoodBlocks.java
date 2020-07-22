@@ -2,7 +2,7 @@ package io.github.teamhollow.theroofedcanyon.block.helpers;
 
 import static io.github.teamhollow.theroofedcanyon.init.TRCBlocks.*;
 
-import io.github.teamhollow.theroofedcanyon.block.*;
+import io.github.teamhollow.theroofedcanyon.block.helpers.cpublic.*;
 import io.github.teamhollow.theroofedcanyon.init.TRCBlocks;
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.FuelRegistry;

@@ -3,6 +3,7 @@ package io.github.teamhollow.theroofedcanyon;
 import org.apache.logging.log4j.Level;
 
 import io.github.teamhollow.theroofedcanyon.init.TRCBlocks;
+import io.github.teamhollow.theroofedcanyon.init.TRCEntities;
 import io.github.teamhollow.theroofedcanyon.init.TRCParticleTypes;
 import io.github.teamhollow.theroofedcanyon.util.Utils;
 import net.fabricmc.api.ClientModInitializer;
@@ -25,6 +26,7 @@ public class TheRoofedCanyonClient implements ClientModInitializer {
 
         new Utils();
         TRCParticleTypes.registerFactories();
+        TRCEntities.registerRenderers();
 
         // biome colours
         ColorProviderRegistry.BLOCK.register((state, world, pos, tintIndex) -> {

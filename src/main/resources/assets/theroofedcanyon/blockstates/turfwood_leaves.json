@@ -17,6 +17,23 @@
                 "y": 270
             }
         ],
+        "snowy=false,infested=true": [
+            {
+                "model": "theroofedcanyon:block/turfwood_leaves_infested"
+            },
+            {
+                "model": "theroofedcanyon:block/turfwood_leaves_infested",
+                "y": 90
+            },
+            {
+                "model": "theroofedcanyon:block/turfwood_leaves_infested",
+                "y": 180
+            },
+            {
+                "model": "theroofedcanyon:block/turfwood_leaves_infested",
+                "y": 270
+            }
+        ],
         "snowy=true": {
             "model": "theroofedcanyon:block/turfwood_leaves_snow"
         }

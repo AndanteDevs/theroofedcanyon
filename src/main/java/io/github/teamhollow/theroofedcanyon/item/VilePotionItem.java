@@ -46,7 +46,7 @@ public class VilePotionItem extends Item {
         if (!world.isClient) {
             List<StatusEffectInstance> chosenEffects = new ArrayList<>();
             Utils.harmfulStatusEffects.forEach((StatusEffect statusEffect) -> {
-                if (world.random.nextDouble() > 0.775D) {
+                if (world.random.nextDouble() <= 0.225D) {
                     chosenEffects.add(new StatusEffectInstance(statusEffect, 200, 1));
                 }
             });

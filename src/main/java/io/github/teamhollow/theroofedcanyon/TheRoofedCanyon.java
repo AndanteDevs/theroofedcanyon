@@ -31,6 +31,7 @@ public class TheRoofedCanyon implements ModInitializer {
 
         new TRCItems();
         new TRCBlocks();
+        new TRCEntities();
 
         new TRCDecorators();
         new TRCBiomes();
@@ -40,5 +41,9 @@ public class TheRoofedCanyon implements ModInitializer {
 
     public static void log(Level level, String message) {
         LOGGER.log(level, "[" + MOD_NAME + "] " + message);
+    }
+
+    public static Identifier texture(String path) {
+        return new Identifier(MOD_ID, "textures/" + path + ".png");
     }
 }

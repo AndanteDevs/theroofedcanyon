@@ -1,4 +1,4 @@
-package io.github.teamhollow.theroofedcanyon.block;
+package io.github.teamhollow.theroofedcanyon.block.helpers.cpublic;
 
 import net.minecraft.block.TrapdoorBlock;
 

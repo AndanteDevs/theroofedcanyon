@@ -30,5 +30,7 @@
     "item.theroofedcanyon.vile_bottle": "Bottle of Vile",
     "item.theroofedcanyon.vile_potion": "Vile Potion",
     "item.theroofedcanyon.vile_potion.tooltip": "Unknown effect(s)",
-    "item.theroofedcanyon.turfwood_boat": "Turfwood Boat"
+    "item.theroofedcanyon.turfwood_boat": "Turfwood Boat",
+
+    "entity.theroofedcanyon.grubworm": "Grubworm"
 }
