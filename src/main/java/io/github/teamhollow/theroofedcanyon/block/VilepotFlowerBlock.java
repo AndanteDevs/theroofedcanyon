@@ -13,6 +13,9 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
 import net.minecraft.block.ShapeContext;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.LivingEntity;
+import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.player.PlayerEntity;
@@ -122,6 +125,9 @@ public class VilepotFlowerBlock extends Block {
         return (int)state.get(VILE_LEVEL);
     }
 
+    public boolean hasVile(BlockState state) {
+        return getVile(state) > 0;
+    }
     public boolean isOozing(BlockState state) {
         return getVile(state) >= 4;
     }
@@ -141,6 +147,16 @@ public class VilepotFlowerBlock extends Block {
     }
     public boolean hasRandomTicks(BlockState state) {
         return !isMature(state);
+    }
+
+    public void onEntityCollision(BlockState state, World world, BlockPos pos, Entity entity) {
+        if (entity instanceof LivingEntity && hasVile(state) && !world.isClient())  {
+            LivingEntity livingEntity = (LivingEntity)entity;
+            livingEntity.addStatusEffect(new StatusEffectInstance(StatusEffects.POISON, getVile(state) * 20 , 1));
+            livingEntity.damage(DamageSource.CACTUS, 0.25F);
+        }
+
+        super.onEntityCollision(state, world, pos, entity);
     }
 
     @Environment(EnvType.CLIENT)
