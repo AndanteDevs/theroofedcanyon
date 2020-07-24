@@ -1,5 +1,7 @@
 package io.github.teamhollow.theroofedcanyon.world.biome;
 
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnGroup;
 import net.minecraft.sound.BiomeMoodSound;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.biome.BiomeEffects;
@@ -29,5 +31,6 @@ public class RoofedCanyonHighlandsBiome extends Biome {
                 .parent(null)
         );
         RoofedCanyonBiome.addFeatures(this);
+        this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.SLIME, 95, 4, 4));
     }
 }

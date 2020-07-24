@@ -3,6 +3,7 @@ package io.github.teamhollow.theroofedcanyon.world.biome;
 import com.google.common.collect.ImmutableList;
 
 import io.github.teamhollow.theroofedcanyon.init.TRCDecorators;
+import io.github.teamhollow.theroofedcanyon.init.TRCEntities;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.SpawnGroup;
 import net.minecraft.sound.BiomeMoodSound;
@@ -40,7 +41,8 @@ public class RoofedCanyonBiome extends Biome {
                 .parent(null)
         );
         addFeatures(this);
-        this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.SLIME, 100, 4, 4));
+        this.addSpawn(SpawnGroup.CREATURE, new Biome.SpawnEntry(TRCEntities.GRUBWORM, 8, 4, 4));
+        this.addSpawn(SpawnGroup.MONSTER, new Biome.SpawnEntry(EntityType.SLIME, 95, 4, 4));
     }
 
 	public static void addFeatures(Biome biome) {
