@@ -3,7 +3,7 @@
     "textures": {
         "top": "theroofedcanyon:block/turfwood_leaves_top",
         "bottom": "theroofedcanyon:block/turfwood_log_top",
-        "side": "theroofedcanyon:block/turfwood_leaves_snow",
+        "side": "theroofedcanyon:block/turfwood_leaves_side_snow",
         "particle": "theroofedcanyon:block/turfwood_log"
     }
 }

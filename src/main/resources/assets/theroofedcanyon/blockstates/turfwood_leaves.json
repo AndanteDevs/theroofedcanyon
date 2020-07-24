@@ -1,6 +1,6 @@
 {
     "variants": {
-        "snowy=false": [
+        "snowy=false,infested=false": [
             {
                 "model": "theroofedcanyon:block/turfwood_leaves"
             },
@@ -17,6 +17,12 @@
                 "y": 270
             }
         ],
+        "snowy=true,infested=true": {
+            "model": "theroofedcanyon:block/turfwood_leaves_snow"
+        },
+        "snowy=true,infested=false": {
+            "model": "theroofedcanyon:block/turfwood_leaves_snow"
+        },
         "snowy=false,infested=true": [
             {
                 "model": "theroofedcanyon:block/turfwood_leaves_infested"
@@ -33,9 +39,6 @@
                 "model": "theroofedcanyon:block/turfwood_leaves_infested",
                 "y": 270
             }
-        ],
-        "snowy=true": {
-            "model": "theroofedcanyon:block/turfwood_leaves_snow"
-        }
+        ]
     }
 }

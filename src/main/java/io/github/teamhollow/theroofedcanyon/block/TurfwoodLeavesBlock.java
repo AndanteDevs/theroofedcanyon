@@ -38,7 +38,7 @@ public class TurfwoodLeavesBlock extends GrassBlock {
 
     public TurfwoodLeavesBlock() {
         super(AbstractBlock.Settings.of(Material.SOLID_ORGANIC).ticksRandomly().strength(0.6F).sounds(BlockSoundGroup.WOOD));
-        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(INFESTED, false));
+        this.setDefaultState((BlockState)((BlockState)this.stateManager.getDefaultState()).with(INFESTED, false).with(SNOWY, false));
     }
 
     @Override
