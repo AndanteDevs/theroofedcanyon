@@ -112,7 +112,7 @@ public class TurfwoodLeavesBlock extends GrassBlock {
     }
 
 	public static boolean isInfested(BlockState state) {
-		return state.getBlock() instanceof TurfwoodLeavesBlock && state.get(INFESTED);
+		return state.get(INFESTED);
     }
 
     private void spawnSilverfish(World world, BlockPos pos) {

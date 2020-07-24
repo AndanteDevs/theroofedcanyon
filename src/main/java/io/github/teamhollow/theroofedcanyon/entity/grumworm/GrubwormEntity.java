@@ -114,7 +114,8 @@ public class GrubwormEntity extends HostileEntity {
     }
 
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
-        return !TurfwoodLeavesBlock.isInfested(world.getBlockState(pos.down())) ? 10.0F : super.getPathfindingFavor(pos, world);
+        BlockState blockState = world.getBlockState(pos.down());
+        return blockState.getBlock() == TRCBlocks.TURFWOOD.LEAVES && !TurfwoodLeavesBlock.isInfested(blockState) ? 10.0F : super.getPathfindingFavor(pos, world);
     }
 
     public static boolean canSpawn(EntityType<GrubwormEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
@@ -170,7 +171,7 @@ public class GrubwormEntity extends HostileEntity {
                     this.direction = Direction.random(random);
                     BlockPos blockPos = (new BlockPos(this.mob.getX(), this.mob.getY() + 0.5D, this.mob.getZ())).offset(this.direction);
                     BlockState blockState = this.mob.world.getBlockState(blockPos);
-                    if (!TurfwoodLeavesBlock.isInfested(blockState)) {
+                    if (blockState.getBlock() == TRCBlocks.TURFWOOD.LEAVES && !TurfwoodLeavesBlock.isInfested(blockState)) {
                         this.canInfest = true;
                         return true;
                     }
@@ -192,7 +193,7 @@ public class GrubwormEntity extends HostileEntity {
                 WorldAccess worldAccess = this.mob.world;
                 BlockPos blockPos = (new BlockPos(this.mob.getX(), this.mob.getY() + 0.5D, this.mob.getZ())).offset(this.direction);
                 BlockState blockState = worldAccess.getBlockState(blockPos);
-                if (!TurfwoodLeavesBlock.isInfested(blockState)) {
+                if (blockState.getBlock() == TRCBlocks.TURFWOOD.LEAVES && !TurfwoodLeavesBlock.isInfested(blockState)) {
                     worldAccess.setBlockState(blockPos, blockState.with(TRCProperties.INFESTED, true), 3);
                     this.mob.playSpawnEffects();
                     this.mob.remove();
