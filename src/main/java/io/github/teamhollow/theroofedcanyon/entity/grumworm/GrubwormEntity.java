@@ -6,7 +6,6 @@ import java.util.Random;
 import io.github.teamhollow.theroofedcanyon.block.TurfwoodLeavesBlock;
 import io.github.teamhollow.theroofedcanyon.init.TRCBlocks;
 import io.github.teamhollow.theroofedcanyon.init.TRCProperties;
-import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityDimensions;
 import net.minecraft.entity.EntityGroup;
@@ -229,13 +228,12 @@ public class GrubwormEntity extends HostileEntity {
                 Random random = this.grubworm.getRandom();
                 BlockPos blockPos = this.grubworm.getBlockPos();
 
-                for (int i = 0; i <= 5 && i >= -5; i = (i <= 0 ? 1 : 0) - i) {
-                    for (int j = 0; j <= 10 && j >= -10; j = (j <= 0 ? 1 : 0) - j) {
-                        for (int k = 0; k <= 10 && k >= -10; k = (k <= 0 ? 1 : 0) - k) {
-                            BlockPos blockPos2 = blockPos.add(j, i, k);
+                for (int y = 0; y <= 5 && y >= -5; y = (y <= 0 ? 1 : 0) - y) {
+                    for (int x = 0; x <= 10 && x >= -10; x = (x <= 0 ? 1 : 0) - x) {
+                        for (int z = 0; z <= 10 && z >= -10; z = (z <= 0 ? 1 : 0) - z) {
+                            BlockPos blockPos2 = blockPos.add(x, y, z);
                             BlockState blockState = world.getBlockState(blockPos2);
-                            Block block = blockState.getBlock();
-                            if (block instanceof TurfwoodLeavesBlock) {
+                            if (blockState.getBlock() == TRCBlocks.TURFWOOD.LEAVES && TurfwoodLeavesBlock.isInfested(blockState)) {
                                 if (world.getGameRules().getBoolean(GameRules.DO_MOB_GRIEFING)) {
                                     world.breakBlock(blockPos2, true, this.grubworm);
                                 } else {
