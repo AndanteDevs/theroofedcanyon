@@ -5,21 +5,22 @@
     "name": "The Roofed Canyon",
     "description": "Technically underground",
     "authors": [
+        "MCS Mod Development Team",
         "Team Hollow"
     ],
     "contributors": [],
     "contact": {
-        "sources": "https://github.com/Team-Hollow/theroofedcanyon"
+        "sources": "https://github.com/minecraftsuggestions/theroofedcanyon"
     },
     "license": "MIT",
     "icon": "pack.png",
     "environment": "*",
     "entrypoints": {
         "main": [
-            "io.github.teamhollow.theroofedcanyon.TheRoofedCanyon"
+            "io.github.minecraftsuggestions.theroofedcanyon.TheRoofedCanyon"
         ],
         "client": [
-            "io.github.teamhollow.theroofedcanyon.TheRoofedCanyonClient"
+            "io.github.minecraftsuggestions.theroofedcanyon.TheRoofedCanyonClient"
         ],
         "server": []
     },

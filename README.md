@@ -16,5 +16,5 @@
 </h5>
 
 <h5 align="center">
-    Join the Team Hollow Discord for support or to chat <a href="https://discord.gg/Yqkb9N3">https://discord.gg/Yqkb9N3</a>
+    Join the Minecraft Suggestions Discord for support or to chat <a href="https://discord.gg/gudqVkx">https://discord.gg/gudqVkx</a>
 </h5>
