@@ -122,7 +122,7 @@ public class TurfwoodLeavesBlock extends GrassBlock {
         grubwormEntity.playSpawnEffects();
     }
 
-    public void onStacksDropped(BlockState state, World world, BlockPos pos, ItemStack stack) {
+    public void onStacksDropped(BlockState state, ServerWorld world, BlockPos pos, ItemStack stack) {
         super.onStacksDropped(state, world, pos, stack);
         if (!world.isClient && world.getGameRules().getBoolean(GameRules.DO_TILE_DROPS) && EnchantmentHelper.getLevel(Enchantments.SILK_TOUCH, stack) == 0) {
             this.spawnSilverfish(world, pos);

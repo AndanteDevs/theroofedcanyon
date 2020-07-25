@@ -25,6 +25,7 @@ import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.BlockStateParticleEffect;
 import net.minecraft.particle.ParticleTypes;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundEvent;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.math.BlockPos;
@@ -46,7 +47,8 @@ public class GrubwormEntity extends AnimalEntity {
     }
 
     public static DefaultAttributeContainer.Builder createGrubwormAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
+        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D)
+                .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
     }
 
     protected void initGoals() {
@@ -117,16 +119,16 @@ public class GrubwormEntity extends AnimalEntity {
 
     public float getPathfindingFavor(BlockPos pos, WorldView world) {
         BlockState blockState = world.getBlockState(pos.down());
-        return blockState.getBlock() == TRCBlocks.TURFWOOD.LEAVES && !TurfwoodLeavesBlock.isInfested(blockState) 
-            ? 10.0F
-            : super.getPathfindingFavor(pos, world);
+        return blockState.getBlock() == TRCBlocks.TURFWOOD.LEAVES && !TurfwoodLeavesBlock.isInfested(blockState) ? 10.0F
+                : super.getPathfindingFavor(pos, world);
     }
 
     public EntityGroup getGroup() {
         return EntityGroup.ARTHROPOD;
     }
 
-    public static boolean canSpawn(EntityType<GrubwormEntity> type, WorldAccess world, SpawnReason spawnReason, BlockPos pos, Random random) {
+    public static boolean canSpawn(EntityType<GrubwormEntity> type, WorldAccess world, SpawnReason spawnReason,
+            BlockPos pos, Random random) {
         return world.getBlockState(pos.down()).isOf(TRCBlocks.TURFWOOD.LEAVES);
     }
 
@@ -255,7 +257,7 @@ public class GrubwormEntity extends AnimalEntity {
     }
 
     @Override
-    public PassiveEntity createChild(PassiveEntity mate) {
-        return (GrubwormEntity) TRCEntities.GRUBWORM.create(this.world);
+    public PassiveEntity createChild(ServerWorld world, PassiveEntity mate) {
+        return (GrubwormEntity)TRCEntities.GRUBWORM.create(this.world);
     }
 }

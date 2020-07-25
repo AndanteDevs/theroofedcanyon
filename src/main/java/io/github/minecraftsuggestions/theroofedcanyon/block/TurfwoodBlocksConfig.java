@@ -1,9 +1,9 @@
 package io.github.minecraftsuggestions.theroofedcanyon.block;
 
 import io.github.minecraftsuggestions.theroofedcanyon.block.helpers.WoodBlocksConfig;
-import io.github.minecraftsuggestions.theroofedcanyon.block.sapling.TurfwoodSaplingGenerator;
 import net.minecraft.block.Material;
 import net.minecraft.block.MaterialColor;
+import net.minecraft.block.sapling.OakSaplingGenerator;
 
 public class TurfwoodBlocksConfig extends WoodBlocksConfig {
     public TurfwoodBlocksConfig() {
@@ -18,7 +18,8 @@ public class TurfwoodBlocksConfig extends WoodBlocksConfig {
         woodMaterialColor = MaterialColor.WOOD;
         strippedWoodMaterial = Material.WOOD;
         strippedWoodMaterialColor = MaterialColor.WOOD;
-        saplingGenerator = new TurfwoodSaplingGenerator();
+        // saplingGenerator = new TurfwoodSaplingGenerator();
+        saplingGenerator = new OakSaplingGenerator();
 
         LEAVES = new TurfwoodLeavesBlock();
     }
