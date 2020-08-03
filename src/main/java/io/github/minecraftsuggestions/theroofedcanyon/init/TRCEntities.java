@@ -1,6 +1,7 @@
 package io.github.minecraftsuggestions.theroofedcanyon.init;
 
 import io.github.minecraftsuggestions.theroofedcanyon.TheRoofedCanyon;
+import io.github.minecraftsuggestions.theroofedcanyon.entity.chomproot.*;
 import io.github.minecraftsuggestions.theroofedcanyon.entity.grumworm.*;
 import net.fabricmc.fabric.api.client.rendereregistry.v1.EntityRendererRegistry;
 import net.fabricmc.fabric.api.object.builder.v1.entity.FabricDefaultAttributeRegistry;
@@ -13,9 +14,11 @@ import net.minecraft.util.registry.Registry;
 
 public class TRCEntities {
     public static final EntityType<GrubwormEntity> GRUBWORM = register(GrubwormEntity.id, GrubwormEntity.builder);
+    public static final EntityType<ChomprootEntity> CHOMPROOT = register(ChomprootEntity.id, ChomprootEntity.builder);
 
     public TRCEntities() {
         registerDefaultAttributes(GRUBWORM, GrubwormEntity.createGrubwormAttributes());
+        registerDefaultAttributes(CHOMPROOT, ChomprootEntity.createChomprootAttributes());
     }
 
     public static void registerRenderers() {
@@ -24,6 +27,10 @@ public class TRCEntities {
         INSTANCE.register(
             GRUBWORM,
             (entityRenderDispatcher, context) -> new GrubwormEntityRenderer(entityRenderDispatcher)
+        );
+        INSTANCE.register(
+            CHOMPROOT,
+            (entityRenderDispatcher, context) -> new ChomprootEntityRenderer(entityRenderDispatcher)
         );
     }
 

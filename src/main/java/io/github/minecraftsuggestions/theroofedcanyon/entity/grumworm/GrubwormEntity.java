@@ -37,7 +37,9 @@ import net.minecraft.world.WorldView;
 public class GrubwormEntity extends AnimalEntity {
     public static final String id = "grubworm";
     public static final EntityType.Builder<GrubwormEntity> builder = EntityType.Builder
-            .create(GrubwormEntity::new, SpawnGroup.MONSTER).setDimensions(0.3F, 0.2F).maxTrackingRange(8);
+        .create(GrubwormEntity::new, SpawnGroup.MONSTER)
+        .setDimensions(0.3F, 0.2F)
+        .maxTrackingRange(8);
 
     private GrubwormEntity.CallForHelpGoal callForHelpGoal;
 
@@ -46,7 +48,9 @@ public class GrubwormEntity extends AnimalEntity {
     }
 
     public static DefaultAttributeContainer.Builder createGrubwormAttributes() {
-        return MobEntity.createMobAttributes().add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D).add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
+        return MobEntity.createMobAttributes()
+            .add(EntityAttributes.GENERIC_MAX_HEALTH, 8.0D)
+            .add(EntityAttributes.GENERIC_MOVEMENT_SPEED, 0.25D);
     }
 
     protected void initGoals() {
